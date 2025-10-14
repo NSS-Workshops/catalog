@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.jsx';
+
+export interface Props {
+  title: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const { title, description = "Professional Development Workshop Catalog for Software Developers", currentPath = "/" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navigation currentPath={currentPath} client:load />
+    <slot />
+  </body>
+</html>

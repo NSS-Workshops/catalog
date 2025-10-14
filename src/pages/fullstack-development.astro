@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryView from '../components/CategoryView.jsx';
+import { fullstackDevelopment } from '../data/fullstack-development.js';
+---
+
+<Layout title="Full-Stack Development - Workshop Catalog" currentPath="/catalog/fullstack-development">
+  <div style="min-height: 100vh; background-color: var(--gray-1); padding: 1.5rem;">
+    <div class="container">
+      <CategoryView category={fullstackDevelopment} client:load />
+    </div>
+  </div>
+</Layout>

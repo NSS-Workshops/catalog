@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllWorkshops, getWorkshopBySlug } from '../../data/workshops.js';
+import { tracks } from '../../data/tracks.js';
+import { Clock, ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const workshops = getAllWorkshops();
+  return workshops.map((workshop) => ({
+    params: { slug: workshop.slug },
+    props: { workshop },
+  }));
+}
+
+const { workshop } = Astro.props;
+
+if (!workshop) {
+  return Astro.redirect('/404');
+}
+
+const getTrackInfo = (trackKey) => tracks[trackKey] || tracks.all;
+const primaryTrack = getTrackInfo(workshop.tracks[0]);
+---
+
+<Layout title={`${workshop.title} - Workshop Details`} description={workshop.description}>
+  <div style="min-height: 100vh; background-color: var(--gray-1); padding: 1.5rem;">
+    <div class="container">
+      <!-- Back Navigation -->
+      <div style="margin-bottom: 2rem;">
+        <a href="/catalog/" class="btn btn-secondary" style="text-decoration: none;">
+          <ArrowLeft size={16} />
+          Back to Home
+        </a>
+      </div>
+
+      <!-- Workshop Header -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+          {workshop.tracks.map((trackKey) => {
+            const track = getTrackInfo(trackKey);
+            return (
+              <span class={`btn btn-secondary ${track.color}`} style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                {track.name}
+              </span>
+            );
+          })}
+        </div>
+
+        <h1 style="margin-bottom: 1rem;">{workshop.title}</h1>
+        <p style="font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--gray-11);">
+          {workshop.description}
+        </p>
+
+        <!-- Workshop Meta Info -->
+        <div class="grid grid-3" style="margin-bottom: 1.5rem;">
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--gray-12);">Duration</h3>
+            <div class="duration-badge">
+              <Clock size={16} />
+              {workshop.duration}
+            </div>
+          </div>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--gray-12);">Level</h3>
+            <span class={`level-${workshop.level.toLowerCase()}`}>
+              {workshop.level}
+            </span>
+          </div>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--gray-12);">Prerequisites</h3>
+            <p style="font-size: 0.875rem; margin: 0; color: var(--gray-11);">
+              {workshop.prerequisites}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Outcomes -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <h2 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <CheckCircle color="var(--green-9)" size={24} />
+          What You'll Learn
+        </h2>
+        <ul class="workshop-outcomes" style="font-size: 1rem;">
+          {workshop.outcomes.map((outcome) => (
+            <li style="margin-bottom: 0.5rem;">{outcome}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Workshop Details -->
+      <div class="grid grid-2" style="gap: 2rem; margin-bottom: 2rem;">
+        <!-- Prerequisites & Preparation -->
+        <div class="card">
+          <h2 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <AlertCircle color="var(--orange-9)" size={24} />
+            Prerequisites & Preparation
+          </h2>
+          <p style="margin-bottom: 1rem;">
+            <strong>Required Experience:</strong> {workshop.prerequisites}
+          </p>
+          <div style="background-color: var(--blue-2); padding: 1rem; border-radius: 6px; border-left: 4px solid var(--blue-9);">
+            <p style="margin: 0; font-size: 0.875rem; color: var(--blue-11);">
+              <strong>Preparation Tip:</strong> Review the prerequisites carefully to ensure you get the most out of this workshop.
+              If you're unsure about your readiness, consider taking foundational workshops first.
+            </p>
+          </div>
+        </div>
+
+        <!-- Workshop Format -->
+        <div class="card">
+          <h2 style="margin-bottom: 1rem;">Workshop Format</h2>
+          <div style="margin-bottom: 1rem;">
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Duration</h3>
+            <p style="margin-bottom: 1rem; font-size: 0.875rem;">{workshop.duration} of intensive, hands-on learning</p>
+          </div>
+
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Delivery Options</h3>
+          <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
+            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--green-9);">✓</span>
+              <strong>In-Person Intensive:</strong> Full-time cohorts with hands-on labs
+            </li>
+            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--green-9);">✓</span>
+              <strong>Evening Part-Time:</strong> 2-3 evenings per week for working professionals
+            </li>
+            <li style="margin-bottom: 0.5rem; padding-left: 1rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--green-9);">✓</span>
+              <strong>Weekend Bootcamp:</strong> Concentrated learning over weekends
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Related Workshops -->
+      <div class="card">
+        <h2 style="margin-bottom: 1rem;">Continue Your Learning Journey</h2>
+        <p style="margin-bottom: 1rem; color: var(--gray-11);">
+          Explore related workshops to build on the skills you'll gain in this session.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/catalog/" class="btn btn-primary" style="text-decoration: none;">
+            Back to Home
+          </a>
+          {workshop.tracks.includes('beginner') && (
+            <a href="/catalog/foundation-skills" class="btn btn-secondary" style="text-decoration: none;">
+              View Foundation Skills
+            </a>
+          )}
+          {workshop.tracks.includes('ai') && (
+            <a href="/catalog/ai-engineering" class="btn btn-secondary" style="text-decoration: none;">
+              View AI Engineering
+            </a>
+          )}
+          {workshop.tracks.includes('fullstack') && (
+            <a href="/catalog/fullstack-development" class="btn btn-secondary" style="text-decoration: none;">
+              View Full-Stack Development
+            </a>
+          )}
+          {workshop.tracks.includes('devops') && (
+            <a href="/catalog/devops-infrastructure" class="btn btn-secondary" style="text-decoration: none;">
+              View DevOps & Infrastructure
+            </a>
+          )}
+          {workshop.tracks.includes('leadership') && (
+            <a href="/catalog/technical-leadership" class="btn btn-secondary" style="text-decoration: none;">
+              View Technical Leadership
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @import '../../styles/global.css';
+</style>

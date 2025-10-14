@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryView from '../components/CategoryView.jsx';
+import { technicalLeadership } from '../data/technical-leadership.js';
+---
+
+<Layout title="Technical Leadership - Workshop Catalog" currentPath="/catalog/technical-leadership">
+  <div style="min-height: 100vh; background-color: var(--gray-1); padding: 1.5rem;">
+    <div class="container">
+      <CategoryView category={technicalLeadership} client:load />
+    </div>
+  </div>
+</Layout>
