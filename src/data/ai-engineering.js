@@ -14,6 +14,16 @@ export const aiEngineering = {
       slug: "ai-fundamentals-developers"
     },
     {
+      title: "Integrated Agentic AI Tooling",
+      duration: "2 days",
+      level: "Beginner",
+      tracks: ["ai", "beginner"],
+      description: "You will learn how to integrate LLMs into your development workflow by using highly customizable Visual Studio Code extensions, efficient system prompts, and building a long-term context database that makes you more efficient the more you use it",
+      outcomes: ["Set up RooCode with your preferred LLM", "Install and configure RooFlow custom prompts", "Build a project context database with ConPort", "Create efficient development workflows with AI assistance"],
+      prerequisites: "Basic programming knowledge, Visual Studio Code familiarity",
+      slug: "integrated-agentic-ai-tooling"
+    },
+    {
       title: "AI Workflow Automation Fundamentals",
       duration: "2 days",
       level: "Intermediate",
