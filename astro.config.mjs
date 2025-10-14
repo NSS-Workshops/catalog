@@ -6,7 +6,7 @@ export default defineConfig({
   integrations: [
     react()
   ],
-  site: 'https://your-username.github.io',
+  site: 'https://nss-workshops.github.io',
   base: '/catalog',
   output: 'static',
   build: {
