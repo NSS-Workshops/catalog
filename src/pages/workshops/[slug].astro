@@ -6,10 +6,12 @@ import { Clock, ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react';
 
 export async function getStaticPaths() {
   const workshops = getAllWorkshops();
-  return workshops.map((workshop) => ({
-    params: { slug: workshop.slug },
-    props: { workshop },
-  }));
+  return workshops.map((workshop) => {
+    return {
+      params: { slug: workshop.slug },
+      props: { workshop }
+    };
+  });
 }
 
 const { workshop } = Astro.props;
