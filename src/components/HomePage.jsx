@@ -171,10 +171,6 @@ const HomePage = () => {
           <h3 style={{ marginBottom: '1rem' }}>Workshop Delivery Options</h3>
           <div className="grid grid-3" style={{ fontSize: '0.875rem' }}>
             <div>
-              <p style={{ fontWeight: 600, marginBottom: '0.5rem' }}>In-Person Intensive</p>
-              <p>Full-time cohorts with hands-on labs and peer collaboration</p>
-            </div>
-            <div>
               <p style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Evening Part-Time</p>
               <p>2-3 evenings per week for working professionals</p>
             </div>
