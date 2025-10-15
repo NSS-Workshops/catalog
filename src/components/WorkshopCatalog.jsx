@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BookOpen, Users, Bot, Code, Server, Award, Clock, ChevronDown, ChevronRight } from 'lucide-react';
-import { workshops, tracks } from '../data/workshops';
+import { workshops } from '../data/workshops';
+import { tracks } from '../data/tracks';
 
 const WorkshopCatalog = () => {
   const [selectedTrack, setSelectedTrack] = useState('all');

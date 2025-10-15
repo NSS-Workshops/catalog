@@ -74,6 +74,36 @@ export const fullstackDevelopment = {
       slug: "fullstack-application-architecture"
     },
     {
+      title: "Introduction to Event-Driven Architecture",
+      duration: "2 days",
+      level: "Beginner",
+      tracks: ["fullstack"],
+      description: "Learn the fundamentals of event-driven systems and messaging patterns",
+      outcomes: ["Understand event-driven concepts", "Implement basic event patterns", "Design decoupled systems"],
+      prerequisites: "Basic programming knowledge",
+      slug: "introduction-event-driven-architecture"
+    },
+    {
+      title: "Microservices and Event Brokers",
+      duration: "3 days",
+      level: "Intermediate",
+      tracks: ["fullstack"],
+      description: "Build distributed systems with microservices and message brokers",
+      outcomes: ["Design microservice architectures", "Implement event brokers", "Handle distributed system challenges"],
+      prerequisites: "API development experience",
+      slug: "microservices-event-brokers"
+    },
+    {
+      title: "Containerized Development Environments",
+      duration: "2 days",
+      level: "Intermediate",
+      tracks: ["fullstack"],
+      description: "Create consistent, portable development environments using containers",
+      outcomes: ["Set up containerized dev environments", "Configure multi-service applications", "Implement development workflows"],
+      prerequisites: "Docker & Container Essentials workshop",
+      slug: "containerized-development-environment"
+    },
+    {
       title: "Performance Optimization for Web Apps",
       duration: "2 days",
       level: "Advanced",
