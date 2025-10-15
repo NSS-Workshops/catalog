@@ -4,6 +4,26 @@ export const technicalLeadership = {
   description: "Lead teams, influence decisions, and drive technical excellence",
   workshops: [
     {
+      title: "Leadership vs Management",
+      duration: "1 day",
+      level: "Beginner",
+      tracks: ["leadership"],
+      description: "Understand the fundamental differences between leadership and management roles using the Five Levels of Leadership framework",
+      outcomes: ["Distinguish leadership from management", "Apply Five Levels of Leadership principles", "Identify when to lead vs manage", "Develop leadership presence"],
+      prerequisites: "Any development experience",
+      slug: "leadership-vs-management"
+    },
+    {
+      title: "Coaching for Technical Leaders",
+      duration: "1 day",
+      level: "Beginner",
+      tracks: ["leadership"],
+      description: "Learn coaching fundamentals to effectively support and develop your team",
+      outcomes: ["Understand coaching principles", "Practice active listening techniques", "Guide team members through challenges"],
+      prerequisites: "Any team interaction experience",
+      slug: "coaching-for-technical-leaders"
+    },
+    {
       title: "Technical Leadership Foundations",
       duration: "2 days",
       level: "Intermediate",
@@ -12,6 +32,16 @@ export const technicalLeadership = {
       outcomes: ["Develop leadership mindset", "Influence without authority", "Balance coding and leadership"],
       prerequisites: "3+ years development experience",
       slug: "technical-leadership-foundations"
+    },
+    {
+      title: "Developing a Learning Culture",
+      duration: "1 day",
+      level: "Intermediate",
+      tracks: ["leadership"],
+      description: "Foster continuous learning and growth within your technical team",
+      outcomes: ["Create psychological safety for learning", "Implement knowledge sharing practices", "Encourage experimentation and innovation"],
+      prerequisites: "Team lead or mentoring experience",
+      slug: "developing-learning-culture"
     },
     {
       title: "Effective Code Reviews & Mentoring",

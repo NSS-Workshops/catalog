@@ -136,17 +136,6 @@ const CategoryView = ({ category, showHeader = true }) => {
                       </h3>
 
                       <p className="workshop-description">{workshop.description}</p>
-
-                      <div className="workshop-preview">
-                        <div className="preview-section">
-                          <strong>Prerequisites:</strong>
-                          <span>{workshop.prerequisites}</span>
-                        </div>
-                        <div className="preview-section">
-                          <strong>Key Outcomes:</strong>
-                          <span>{workshop.outcomes.slice(0, 2).join(' • ')}</span>
-                        </div>
-                      </div>
                     </div>
 
                     <div className="workshop-actions">
