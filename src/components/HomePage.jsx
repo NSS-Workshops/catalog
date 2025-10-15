@@ -1,17 +1,8 @@
 import React from 'react';
-import { BookOpen, Bot, Code, Server, Users, ArrowRight } from 'lucide-react';
+import { BookOpen, Bot, Code, Server, Users, Database, ArrowRight } from 'lucide-react';
 
 const HomePage = () => {
   const tracks = [
-    {
-      name: "Foundation Skills",
-      path: "/catalog/foundation-skills",
-      icon: BookOpen,
-      color: "var(--green-9)",
-      description: "Build core competencies for modern software development",
-      workshops: 3,
-      duration: "4-6 weeks"
-    },
     {
       name: "AI Engineering",
       path: "/catalog/ai-engineering",
@@ -38,6 +29,15 @@ const HomePage = () => {
       description: "Deploy, monitor, and maintain production systems",
       workshops: 11,
       duration: "2-4 months"
+    },
+    {
+      name: "Data Engineering",
+      path: "/catalog/data-engineering",
+      icon: Database,
+      color: "var(--cyan-9)",
+      description: "Build robust data pipelines and analytics systems",
+      workshops: 13,
+      duration: "3-6 months"
     },
     {
       name: "Technical Leadership",
@@ -132,17 +132,7 @@ const HomePage = () => {
         {/* Learning Paths Overview */}
         <div className="card" style={{ marginBottom: '2rem' }}>
           <h2 style={{ marginBottom: '1.5rem' }}>Recommended Learning Paths</h2>
-          <div className="grid grid-3">
-            <div className="learning-path-card path-beginner">
-              <BookOpen color="var(--green-9)" style={{ marginBottom: '0.5rem' }} size={24} />
-              <h3>Career Starter Path</h3>
-              <p style={{ fontSize: '0.875rem', marginBottom: '0.75rem' }}>For those entering software development</p>
-              <ul className="learning-path-steps">
-                <li>→ Foundation Skills (4-6 weeks)</li>
-                <li>→ Choose: AI, Full-Stack, or DevOps</li>
-                <li>→ Specialize further (ongoing)</li>
-              </ul>
-            </div>
+          <div className="grid grid-2">
             <div className="learning-path-card path-ai">
               <Bot color="var(--violet-9)" style={{ marginBottom: '0.5rem' }} size={24} />
               <h3>AI Specialist Path</h3>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Clock, ChevronDown, ChevronRight } from 'lucide-react';
+import { Clock, ChevronDown, ChevronRight, Users, BookOpen, Target } from 'lucide-react';
 
 const CategoryView = ({ category, showHeader = true }) => {
   const [expandedWorkshops, setExpandedWorkshops] = useState(new Set());
+  const [selectedLevel, setSelectedLevel] = useState('all');
 
   const toggleWorkshop = (index) => {
     const newExpanded = new Set(expandedWorkshops);
@@ -16,99 +17,195 @@ const CategoryView = ({ category, showHeader = true }) => {
 
   const getWorkshopUrl = (slug) => `/catalog/workshops/${slug}`;
 
+  // Group workshops by level for better organization
+  const workshopsByLevel = category.workshops.reduce((acc, workshop, index) => {
+    if (!acc[workshop.level]) {
+      acc[workshop.level] = [];
+    }
+    acc[workshop.level].push({ ...workshop, originalIndex: index });
+    return acc;
+  }, {});
+
+  const levelOrder = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
+  const filteredLevels = selectedLevel === 'all'
+    ? levelOrder
+    : levelOrder.filter(level => level.toLowerCase() === selectedLevel);
+
+  const getLevelIcon = (level) => {
+    switch (level.toLowerCase()) {
+      case 'beginner': return <Users size={16} />;
+      case 'intermediate': return <BookOpen size={16} />;
+      case 'advanced': return <Target size={16} />;
+      case 'expert': return <Target size={16} />;
+      default: return <BookOpen size={16} />;
+    }
+  };
+
+  const getLevelDescription = (level) => {
+    switch (level.toLowerCase()) {
+      case 'beginner': return 'Foundation skills and core concepts';
+      case 'intermediate': return 'Practical application and real-world projects';
+      case 'advanced': return 'Complex systems and specialized techniques';
+      case 'expert': return 'Industry leadership and architectural mastery';
+      default: return '';
+    }
+  };
+
   return (
-    <div>
+    <div className="category-view">
       {showHeader && (
-        <div className="card" style={{ marginBottom: '1.5rem' }}>
-          <h1>{category.category}</h1>
-          <p style={{ fontSize: '1.125rem', marginBottom: '0' }}>
-            {category.description}
-          </p>
+        <div className="category-header">
+          <div className="category-hero">
+            <h1>{category.category}</h1>
+            <p className="category-description">{category.description}</p>
+            <div className="category-stats">
+              <span className="stat-item">
+                <BookOpen size={16} />
+                {category.workshops.length} Workshops
+              </span>
+              <span className="stat-item">
+                <Clock size={16} />
+                {category.workshops.reduce((total, w) => total + parseInt(w.duration), 0)} Days Total
+              </span>
+            </div>
+          </div>
         </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {category.workshops.map((workshop, index) => (
-          <div key={index} className="card" style={{ padding: 0, overflow: 'hidden' }}>
-            <button
-              onClick={() => toggleWorkshop(index)}
-              style={{
-                width: '100%',
-                padding: '1.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                textAlign: 'left',
-                transition: 'background-color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--gray-2)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-            >
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
-                  <h3 style={{ margin: 0 }}>
-                    <a
-                      href={getWorkshopUrl(workshop.slug)}
-                      style={{
-                        textDecoration: 'none',
-                        color: 'var(--blue-11)',
-                        fontWeight: 600
-                      }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {workshop.title}
-                    </a>
-                  </h3>
-                  <span className="duration-badge">
-                    <Clock size={14} />
-                    {workshop.duration}
-                  </span>
-                  <span className={`level-${workshop.level.toLowerCase()}`}>
-                    {workshop.level}
-                  </span>
-                </div>
-                <p style={{ fontSize: '0.875rem', margin: 0, color: 'var(--gray-11)' }}>
-                  {workshop.description}
-                </p>
-              </div>
-              {expandedWorkshops.has(index) ? (
-                <ChevronDown color="var(--gray-9)" size={24} />
-              ) : (
-                <ChevronRight color="var(--gray-9)" size={24} />
-              )}
-            </button>
-
-            {expandedWorkshops.has(index) && (
-              <div style={{ padding: '0 1.5rem 1.5rem' }}>
-                <div className="grid grid-2" style={{ marginBottom: '0.75rem' }}>
-                  <div>
-                    <p style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem' }}>Learning Outcomes:</p>
-                    <ul className="workshop-outcomes">
-                      {workshop.outcomes.map((outcome, i) => (
-                        <li key={i}>{outcome}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem' }}>Prerequisites:</p>
-                    <p style={{ fontSize: '0.875rem', marginBottom: '1rem' }}>{workshop.prerequisites}</p>
-
-                    <a
-                      href={getWorkshopUrl(workshop.slug)}
-                      className="btn btn-primary"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      View Details
-                    </a>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+      {/* Level Filter */}
+      <div className="level-filter">
+        <button
+          className={`filter-btn ${selectedLevel === 'all' ? 'active' : ''}`}
+          onClick={() => setSelectedLevel('all')}
+        >
+          All Levels
+        </button>
+        {levelOrder.map(level => (
+          <button
+            key={level}
+            className={`filter-btn ${selectedLevel === level.toLowerCase() ? 'active' : ''}`}
+            onClick={() => setSelectedLevel(level.toLowerCase())}
+          >
+            {getLevelIcon(level)}
+            {level}
+          </button>
         ))}
+      </div>
+
+      {/* Workshop Grid by Level */}
+      <div className="workshops-container">
+        {filteredLevels.map(level => {
+          const workshops = workshopsByLevel[level] || [];
+          if (workshops.length === 0) return null;
+
+          return (
+            <div key={level} className="level-section">
+              <div className="level-header">
+                <div className="level-title">
+                  {getLevelIcon(level)}
+                  <h2>{level} Level</h2>
+                  <span className="workshop-count">({workshops.length} workshops)</span>
+                </div>
+                <p className="level-description">{getLevelDescription(level)}</p>
+              </div>
+
+              <div className={`workshops-grid level-${level.toLowerCase()}`}>
+                {workshops.map((workshop) => (
+                  <div
+                    key={workshop.originalIndex}
+                    className={`workshop-card modern level-${workshop.level.toLowerCase()}`}
+                  >
+                    <div className="workshop-header">
+                      <div className="workshop-meta">
+                        <span className="duration-badge">
+                          <Clock size={12} />
+                          {workshop.duration}
+                        </span>
+                        <span className={`level-badge level-${workshop.level.toLowerCase()}`}>
+                          {workshop.level}
+                        </span>
+                      </div>
+
+                      <h3 className="workshop-title">
+                        <a
+                          href={getWorkshopUrl(workshop.slug)}
+                          className="workshop-link"
+                        >
+                          {workshop.title}
+                        </a>
+                      </h3>
+
+                      <p className="workshop-description">{workshop.description}</p>
+
+                      <div className="workshop-preview">
+                        <div className="preview-section">
+                          <strong>Prerequisites:</strong>
+                          <span>{workshop.prerequisites}</span>
+                        </div>
+                        <div className="preview-section">
+                          <strong>Key Outcomes:</strong>
+                          <span>{workshop.outcomes.slice(0, 2).join(' • ')}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="workshop-actions">
+                      <button
+                        onClick={() => toggleWorkshop(workshop.originalIndex)}
+                        className="expand-btn"
+                      >
+                        {expandedWorkshops.has(workshop.originalIndex) ? (
+                          <>
+                            <ChevronDown size={16} />
+                            Less Details
+                          </>
+                        ) : (
+                          <>
+                            <ChevronRight size={16} />
+                            More Details
+                          </>
+                        )}
+                      </button>
+
+                      <a
+                        href={getWorkshopUrl(workshop.slug)}
+                        className="btn btn-primary workshop-cta"
+                      >
+                        View Workshop
+                      </a>
+                    </div>
+
+                    {expandedWorkshops.has(workshop.originalIndex) && (
+                      <div className="workshop-details">
+                        <div className="details-grid">
+                          <div className="outcomes-section">
+                            <h4>Complete Learning Outcomes</h4>
+                            <ul className="workshop-outcomes">
+                              {workshop.outcomes.map((outcome, i) => (
+                                <li key={i}>{outcome}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="info-section">
+                            <div className="info-item">
+                              <strong>Duration:</strong> {workshop.duration}
+                            </div>
+                            <div className="info-item">
+                              <strong>Level:</strong> {workshop.level}
+                            </div>
+                            <div className="info-item">
+                              <strong>Prerequisites:</strong> {workshop.prerequisites}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

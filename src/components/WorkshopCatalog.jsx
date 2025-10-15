@@ -52,16 +52,6 @@ const WorkshopCatalog = () => {
         <div className="card" style={{ marginBottom: '1.5rem' }}>
           <h2>Recommended Learning Paths</h2>
           <div className="grid grid-3">
-            <div className="learning-path-card path-beginner">
-              <BookOpen color="var(--green-9)" style={{ marginBottom: '0.5rem' }} size={24} />
-              <h3>Career Starter</h3>
-              <p style={{ fontSize: '0.875rem', marginBottom: '0.75rem' }}>For those entering software development</p>
-              <ul className="learning-path-steps">
-                <li>→ Foundation Skills (4-6 weeks)</li>
-                <li>→ Choose: AI, Full-Stack, or DevOps</li>
-                <li>→ Specialize further (ongoing)</li>
-              </ul>
-            </div>
             <div className="learning-path-card path-ai">
               <Bot color="var(--violet-9)" style={{ marginBottom: '0.5rem' }} size={24} />
               <h3>AI Engineering</h3>

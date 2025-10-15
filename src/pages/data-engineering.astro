@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CategoryView from '../components/CategoryView.jsx';
-import { foundationSkills } from '../data/foundation-skills.js';
+import { dataEngineering } from '../data/data-engineering.js';
 ---
 
-<Layout title="Foundation Skills - Workshop Catalog" currentPath="/catalog/foundation-skills">
+<Layout title="Data Engineering - Workshop Catalog" currentPath="/catalog/data-engineering">
   <div style="min-height: 100vh; background-color: var(--gray-1); padding: 1.5rem;">
     <div class="container">
-      <CategoryView category={foundationSkills} client:load />
+      <CategoryView category={dataEngineering} client:load />
     </div>
   </div>
 </Layout>

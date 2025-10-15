@@ -1,14 +1,14 @@
-import { foundationSkills } from './foundation-skills.js';
 import { aiEngineering } from './ai-engineering.js';
 import { fullstackDevelopment } from './fullstack-development.js';
 import { devopsInfrastructure } from './devops-infrastructure.js';
+import { dataEngineering } from './data-engineering.js';
 import { technicalLeadership } from './technical-leadership.js';
 
 export const workshops = [
-  foundationSkills,
   aiEngineering,
   fullstackDevelopment,
   devopsInfrastructure,
+  dataEngineering,
   technicalLeadership
 ];
 

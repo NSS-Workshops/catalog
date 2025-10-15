@@ -1,13 +1,13 @@
 import React from 'react';
-import { BookOpen, Bot, Code, Server, Users, Home } from 'lucide-react';
+import { BookOpen, Bot, Code, Server, Users, Home, Database } from 'lucide-react';
 
 const Navigation = ({ currentPath = '/' }) => {
   const navItems = [
     { path: '/catalog/', label: 'Home', icon: Home },
-    { path: '/catalog/foundation-skills', label: 'Foundation Skills', icon: BookOpen },
     { path: '/catalog/ai-engineering', label: 'AI Engineering', icon: Bot },
     { path: '/catalog/fullstack-development', label: 'Full-Stack Development', icon: Code },
     { path: '/catalog/devops-infrastructure', label: 'DevOps & Infrastructure', icon: Server },
+    { path: '/catalog/data-engineering', label: 'Data Engineering', icon: Database },
     { path: '/catalog/technical-leadership', label: 'Technical Leadership', icon: Users }
   ];
 
