@@ -74,6 +74,16 @@ export const aiEngineering = {
       slug: "vector-databases-semantic-search"
     },
     {
+      title: "Building MCP Servers for AI Applications",
+      duration: "2 days",
+      level: "Intermediate",
+      tracks: ["ai"],
+      description: "Create Model Context Protocol servers to extend AI capabilities with custom tools and data sources",
+      outcomes: ["Build custom MCP servers", "Integrate external APIs via MCP", "Design tool schemas for AI agents", "Deploy MCP servers for production use"],
+      prerequisites: "Vector Databases workshop, API development experience",
+      slug: "building-mcp-servers"
+    },
+    {
       title: "AI-Powered CRM & Sales Automation",
       duration: "1 day",
       level: "Intermediate",

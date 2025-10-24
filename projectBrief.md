@@ -21,7 +21,7 @@ The catalog addresses the growing need for practical, hands-on training in moder
 - **Experiential Learning**: All workshops include hands-on projects using production tools
 
 ### Accessibility & Flexibility
-- **Multiple delivery formats**: In-person intensive, evening part-time, weekend bootcamps
+- **Multiple delivery formats**: Remote via Zoom - evening part-time, weekend bootcamps
 - **Self-directed paths**: Five distinct career tracks allow personalized journeys
 - **Clear prerequisites**: Transparent skill requirements help learners place themselves appropriately
 - **Progressive complexity**: Beginner → Intermediate → Advanced progression within each track
@@ -258,9 +258,9 @@ The AI Engineering track specifically addresses real business needs:
    - DevOps commands high salaries but requires systems thinking
 
 4. **Consider Delivery Format**
-   - Intensive: Best for career changers or between jobs
    - Evening: Ideal for employed professionals
    - Weekend: Good for work-life balance considerations
+   - All workshops delivered remotely via Zoom with interactive sessions
 
 ## Technology Stack
 

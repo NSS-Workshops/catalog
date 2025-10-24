@@ -189,8 +189,8 @@ const WorkshopCatalog = () => {
           <h3 style={{ marginBottom: '0.5rem' }}>Workshop Delivery Options</h3>
           <div className="grid grid-3" style={{ fontSize: '0.875rem' }}>
             <div>
-              <p style={{ fontWeight: 600, marginBottom: '0.25rem' }}>In-Person Intensive</p>
-              <p>Full-time cohorts with hands-on labs and peer collaboration</p>
+              <p style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Remote via Zoom</p>
+              <p>Interactive online sessions with hands-on labs and peer collaboration</p>
             </div>
             <div>
               <p style={{ fontWeight: 600, marginBottom: '0.25rem' }}>Evening Part-Time</p>

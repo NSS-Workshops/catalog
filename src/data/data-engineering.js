@@ -52,16 +52,17 @@ export const dataEngineering = {
 
     // Intermediate Level
     {
-      title: "ETL Pipeline Development",
+      title: "ETL Pipeline Development with dbt",
       duration: "4 days",
       level: "Intermediate",
       tracks: ["data"],
-      description: "Design and implement Extract, Transform, Load (ETL) pipelines using modern tools and frameworks",
+      description: "Design and implement Extract, Transform, Load (ETL) pipelines using modern tools including dbt, Airflow, and other frameworks",
       outcomes: [
-        "Build scalable ETL pipelines",
-        "Implement error handling and monitoring",
+        "Build scalable ETL pipelines with dbt transformations",
+        "Implement data modeling and testing with dbt",
         "Use Apache Airflow for workflow orchestration",
-        "Handle batch and streaming data processing"
+        "Handle batch and streaming data processing",
+        "Implement version control for data transformations"
       ],
       prerequisites: "SQL and Python proficiency",
       slug: "etl-pipeline-development"
@@ -71,30 +72,32 @@ export const dataEngineering = {
       duration: "3 days",
       level: "Intermediate",
       tracks: ["data"],
-      description: "Build modern data warehouses using cloud platforms like AWS, GCP, or Azure",
+      description: "Build modern data warehouses using cloud platforms including Snowflake, AWS Redshift, GCP BigQuery, and Azure Synapse",
       outcomes: [
         "Design dimensional data models",
-        "Implement data warehouses on cloud platforms",
-        "Optimize storage and query performance",
-        "Set up automated data ingestion"
+        "Implement data warehouses on Snowflake and other cloud platforms",
+        "Optimize storage and query performance across different platforms",
+        "Set up automated data ingestion and ELT processes",
+        "Compare and contrast modern cloud warehouse architectures"
       ],
       prerequisites: "SQL expertise, basic cloud knowledge",
       slug: "cloud-data-warehousing"
     },
     {
-      title: "Apache Spark for Big Data Processing",
+      title: "Databricks & Apache Spark for Big Data",
       duration: "4 days",
       level: "Intermediate",
       tracks: ["data"],
-      description: "Process large-scale datasets efficiently using Apache Spark and PySpark",
+      description: "Process large-scale datasets efficiently using Databricks platform with Apache Spark and PySpark",
       outcomes: [
-        "Build Spark applications for data processing",
-        "Optimize Spark jobs for performance",
-        "Handle structured and unstructured data",
-        "Implement real-time data processing"
+        "Build Spark applications on Databricks platform",
+        "Optimize Spark jobs for performance and cost",
+        "Handle structured and unstructured data at scale",
+        "Implement real-time data processing with Delta Lake",
+        "Use Databricks collaborative notebooks and MLflow integration"
       ],
       prerequisites: "Python and SQL proficiency",
-      slug: "apache-spark-big-data"
+      slug: "databricks-spark-big-data"
     },
     {
       title: "Data Quality & Testing Frameworks",
@@ -129,51 +132,55 @@ export const dataEngineering = {
       slug: "kafka-streaming-architecture"
     },
     {
-      title: "Data Lake Architecture & Implementation",
+      title: "Modern Lakehouse Architecture with Iceberg",
       duration: "5 days",
       level: "Advanced",
       tracks: ["data"],
-      description: "Design and implement scalable data lake architectures for enterprise data management",
+      description: "Design and implement modern lakehouse architectures using Apache Iceberg, Delta Lake, and open-source technologies",
       outcomes: [
-        "Design multi-zone data lake architectures",
-        "Implement data governance and security",
-        "Build metadata management systems",
-        "Optimize storage and access patterns"
+        "Design lakehouse architectures with ACID transactions",
+        "Implement Apache Iceberg for table format management",
+        "Build metadata management and catalog systems",
+        "Optimize storage with columnar formats and partitioning",
+        "Integrate with Trino/Presto for federated queries"
       ],
       prerequisites: "Cloud platforms, distributed systems",
-      slug: "data-lake-architecture"
+      slug: "modern-lakehouse-architecture"
     },
     {
-      title: "MLOps & Data Pipeline Automation",
-      duration: "4 days",
+      title: "Advanced MLOps & Data Pipeline Automation",
+      duration: "6 days",
       level: "Advanced",
       tracks: ["data"],
-      description: "Integrate machine learning workflows with data engineering pipelines",
+      description: "Integrate machine learning workflows with data engineering pipelines, including advanced monitoring and drift detection",
       outcomes: [
-        "Build ML-ready data pipelines",
-        "Implement feature stores and versioning",
-        "Automate model training and deployment",
-        "Monitor ML data drift and quality"
+        "Build ML-ready data pipelines with feature stores",
+        "Implement advanced drift detection (Kolmogorov-Smirnov, PSI)",
+        "Automate model retraining and deployment workflows",
+        "Monitor ML data quality with statistical tests",
+        "Handle model versioning and A/B testing infrastructure",
+        "Implement MLflow for experiment tracking and model registry"
       ],
-      prerequisites: "ML basics, data pipeline experience",
-      slug: "mlops-data-automation"
+      prerequisites: "ML basics, data pipeline experience, statistics knowledge",
+      slug: "advanced-mlops-automation"
     },
 
     // Expert Level
     {
-      title: "Distributed Data Systems Architecture",
+      title: "Petabyte-Scale Distributed Data Systems",
       duration: "5 days",
       level: "Expert",
       tracks: ["data"],
-      description: "Design and implement large-scale distributed data systems and architectures",
+      description: "Design and implement petabyte-scale distributed data systems with zero-copy architectures and modern lakehouse technologies",
       outcomes: [
-        "Architect multi-petabyte data systems",
-        "Implement custom distributed processing frameworks",
-        "Design for fault tolerance and scalability",
-        "Optimize cross-region data replication"
+        "Architect multi-petabyte data systems with zero-copy optimization",
+        "Implement Trino over lakehouse with Nessie for version control",
+        "Design fault-tolerant systems with Ceph distributed storage",
+        "Optimize cross-region data replication and consistency",
+        "Build custom distributed processing frameworks for extreme scale"
       ],
-      prerequisites: "Advanced distributed systems, multiple data technologies",
-      slug: "distributed-data-architecture"
+      prerequisites: "Advanced distributed systems, multiple data technologies, storage systems knowledge",
+      slug: "petabyte-distributed-systems"
     },
     {
       title: "Data Mesh & Decentralized Architecture",
